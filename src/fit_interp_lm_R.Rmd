@@ -5,11 +5,12 @@ output: github_document
 
 ##### Set-up R environment
 
-As usual, we need the `tidyverse` packages (which include `dplyr`, `ggplot2`, `readr`, etc). We will also learn about the `broom` package that allows us to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data. We load `broom` independently of the `tidyverse` because `broom` was only added to the `tidyverse` a couple months ago...
+As usual, we need the `tidyverse` packages (which include `dplyr`, `ggplot2`, `readr`, etc). The  `scales` package lets us easily format our plot axes. We will also learn about the `broom` package that allows us to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data. We load `broom` independently of the `tidyverse` because `broom` was only added to the `tidyverse` a couple months ago...
 
 ```{r env}
 library(tidyverse)
-library(broom) 
+library(scales)
+library(broom)
 ```
 
 ##### Explore Dataset:
@@ -21,19 +22,26 @@ The dataset has many interesting possible explanatory values that we could use t
 
 Here we load the data and peak at it as a table:
 ```{r load data}
-prop_data <- read_csv("data/acs_data.csv")
+prop_data <- read_csv("https://raw.githubusercontent.com/ttimbers/UBC-stat-sample-lesson/master/data/acs_data.csv")
+
+# or if you are not connected to internet:
+# prop_data <- read_csv("data/acs_data.csv") 
+
 head(prop_data)
 ```
 
 ##### Let's visualize the data as a scatter plot:
 
-We are interested in whether or not median household income might influence median property value at the state-level. To get an initial idea of whether this is plausible, we will plot the data as a scatter plot.
+We are interested in whether or not median household income might influence median property value at the state-level. To get an initial idea of whether this is plausible, we will plot the data as a scatter plot. We will also use `ggplot`'s `geom_smooth` function to overlay the oridinary least squares regression line on our plot:
 
 ```{r explore data, fig.width = 3.5, fig.height = 4}
 (prop_data_scatter <- ggplot(prop_data, aes(y = median_property_value, x = income)) +
   geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
   xlab("Median State household income in 2015") +
-  ylab("Median State property value in 2015")) 
+  ylab("Median State property value in 2015") +
+  scale_x_continuous(labels = dollar) +
+  scale_y_continuous(labels = dollar))
 ```
 
 ##### Let's fit a linear model! 
