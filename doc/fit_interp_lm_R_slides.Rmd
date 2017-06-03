@@ -185,17 +185,20 @@ summary(prop_model)
 | predicted/fitted values | `model_object$fitted.values` |
 | p-values for coefficients | ` summary(model_object)$coefficients[,4]` |
 | $\sigma$ estimate | `summary(model_object)$sigma` |
-| $R^{2} |`summary(model_object)$r.squared` |
+| $R^{2}$ |`summary(model_object)$r.squared` |
 
----
+----
+
 <center>
-<font size="2">Working with model output in base R,</font>
+<font size="2">Working with model output in base R,</font></br>
 
+<p>
 ![](imgs/gbu.gif)
 
-<font size="2">the good, the bad and the ugly…</font>
+<p><font size="2">the good, the bad and the ugly…</font>
 </center>
----
+
+----
 
 ### The good…
   - all the information you want it there
@@ -210,10 +213,46 @@ summary(prop_model)
   - bizarre symbols in some column names (e.g., summary(model_object)$coefficient)
   - F-statistic p-value is never stored in memory and thus must be calculated by hand
   
----  
+----  
+
 <center>
-<font size="2">`broom`:</font>
+<font size="2">`broom`:</font></br>
+<p>
 ![](imgs/broom.gif)
+<p>
 <font size="2">A better way for working with model output in R</font>
 </center>
 
+## `broom` for working with model output in R:
+
+### The good…
+  - all the information you want it there, and easy to access
+  - consistent syntax
+  - no weird column names
+
+### The bad…
+  - it’s new, so not everyone is familiar with it
+
+### The ugly…
+  - ???
+
+| `broom` function | model output |
+|------------------|--------------|
+| `tidy(model_object) |  model parameters (e.g., coefficients and p-values) |
+| `augment(model_object)` |  model data (e.g., residuals and predicted values) |
+| `glance(model_object)` |  model quality, complexity and summaries (e.g., $\sigma$ estimate and $R^{2}$) |
+
+## Group challenge question:
+
+<center>
+https://tinyurl.com/stat-group-challenge
+</center>
+
+# What did we learn today?
+
+## Where do we go from here?
+
+  - fitting in interpreting more complex linear models in R, revisit:
+    - reference-treatment parameterization in R
+    - R’s matrix representation of X (model.matrix)
+  - model diagnostics (e.g., how do we know if we have a good model? and what to do if we do not…)
