@@ -1,0 +1,128 @@
+---
+title: "Sample lesson - Fitting and interpreting linear regression models in R"
+output: github_document
+---
+
+##### Set-up R environment
+
+As usual, we need the `tidyverse` packages (which include `dplyr`, `ggplot2`, `readr`, etc). We will also learn about the `broom` package that allows us to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data. We load `broom` independently of the `tidyverse` because `broom` was only added to the `tidyverse` a couple months ago...
+
+```{r env}
+library(tidyverse)
+library(broom) 
+```
+
+##### Explore Dataset:
+
+We will be expoloring factors that influence median property value at the state-level in the United States of America in the year 2015. Data was downloaded from [Data USA](https://datausa.io/) using the API in Python. We will learn how to do this in the Web 
+and Cloud Computing course next semester. If you are interested in seeing how this was done now, see [this](retrieve_data_usa.ipynb) Jupyter notebook.
+
+The dataset has many interesting possible explanatory values that we could use to model against the response variable we are interested in, median property value. For now, we will start with a simple linear regression using only median household income as a single explanatory variable. We will build up the complexity of our model in later lectures. 
+
+Here we load the data and peak at it as a table:
+```{r load data}
+prop_data <- read_csv("data/acs_data.csv")
+head(prop_data)
+```
+
+##### Let's visualize the data as a scatter plot:
+
+We are interested in whether or not median household income might influence median property value at the state-level. To get an initial idea of whether this is plausible, we will plot the data as a scatter plot.
+
+```{r explore data, fig.width = 3.5, fig.height = 4}
+(prop_data_scatter <- ggplot(prop_data, aes(y = median_property_value, x = income)) +
+  geom_point() +
+  xlab("Median State household income in 2015") +
+  ylab("Median State property value in 2015")) 
+```
+
+##### Let's fit a linear model! 
+
+As it seems that there might be some relationship, we will now perform a simple linear regression where we use 
+`median_property_value` as our response variable ("Y"), and `income` as our explanatory variable ("X1"). We will use the base R `summary` function to initially view the output of the linear model.
+
+*note - in R, we use the same model notation with linear regression as we have previously learned with ANOVA*
+```{r fit linear regressio}
+prop_model <- lm(median_property_value ~ income, data = prop_data)
+summary(prop_model)
+```
+
+##### Extracting model output in R
+
+As we learned previously, there are a number of key pieces of information that we would like to be able to look at from our model, these include:
+
+    - $\hat{\beta}_{0}$
+    - $\hat{\beta}_{1}$
+    - p-value for $H_{0}$: $\beta_{0}$ = 0
+    - p-value for $H_{0}$: $\beta_{1}$ = 0
+    - residuals
+    - predicted/fitted values
+    - se($\hat{\beta}_{1}$) or $\hat{\sigma}$
+    - $R^{2}$
+
+All of these pieces of information can be extracted from the the linear model object, most (except for the residuals and predicted/fitted values) can be read from the print out from `summary`. Below is code for how to extract each of these individually:
+
+$\hat{\beta}_{0}$ and $\hat{\beta}_{0}$, respectively:
+```{r coefficient estimates}
+prop_model$coefficients
+```
+
+p-values for $H_{0}$: $\beta_{0}$ = 0 and $H_{0}$: $\beta_{1}$ = 0, respectively:
+```{r coefficient estimates p values}
+summary(prop_model)$coefficients[,4]
+```
+
+The residuals:
+```{r residuals} 
+prop_model$residuals
+```
+
+The predicted/fitted values:
+```{r predicted values} 
+prop_model$fitted.values
+```
+
+$se(\hat{\beta}_{1})$ or $\hat{\sigma}$s:
+```{r sigma}
+
+summary(prop_model)$sigma
+```
+
+$R^{2}$:
+```{r R squared}
+summary(prop_model)$r.squared
+```
+
+
+##### Extracting model output using the `broom` package
+
+As you can see from our methods used above to extract key pieces of information from our model in base R, the methods to do so are not consistent (sometimes you are working with the model object itself, and sometimes the summary of that object...) and the data provided to you is not in a nice, tidy data format. This is not too problematic when working with only a couple models, but if you want to combine and compare model outputs from several models, using base R requires a bit of heroic effort on the programming front. To improve the readability of our code, and our efficiency in writing it, as well as to get the model parameters back in a tidy data format we can look to the relatively recent `broom` package.
+
+`broom` has 3 functions that we are interested in:
+
+1. `tidy()` - returns output related to model parameters (e.g., coefficients and p-values)
+
+2. `augment()` - returns output related to model data (e.g., residuals and predicted values)
+
+3. `glance()` - returns output related to model quality, complexity and summaries (e.g., $R^{2}$ and $\hat{\sigma}$)
+
+Thus, with 3 consistent function calls, we can easily get all the model output we are interested, and this comes to us in an tidy data format that is accessible. Let's explore the output of each of these functions when we apply it to our model object:
+
+`tidy()`
+```{r tidy}
+tidy(prop_model)
+```
+
+`augment()`
+```{r augment}
+head(augment(prop_model)) #use head to preview only 6 rows of data frame
+```
+
+`glance()`
+```{r glance}
+glance(prop_model)
+```
+
+Given that these functions output tidy data frames, and there are not bizarre symbols in any of the column names of these data frames, extracting any required piece of information just follows the regular data frame mechanics. Furthermore, in the output of `lm()` from `summary()` the p-value from the F-statistic of the model is only printed to the screen and is never stored in memory. Thus, to use it one needs to either calculate it from the F-statistic, or use the `broom` package `glance()` to get it.
+
+Thus, I strongly recommend using `tidy()`, `augment()` and `glance()` from the `broom` package when extracting information from your linear models in R. You will also see that these `broom` functions also work with more complex models (e.g., general-linearized models) in the Regression 2 course next block. Furthermore, because these model outputs come back as nice tidy data frames, you will find them very useful when you are working with multiple models, for example, when boostrapping or performing cross validation. We will see this in Feature and Model Selection course.
