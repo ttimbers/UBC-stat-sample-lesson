@@ -5,10 +5,12 @@
 ## Sample lesson - Simple linear regression models in R
 
 ## Important lesson links:
-- [Lesson slides](doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)
-- [Lesson R code](src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)
-- [Check-in question](https://b.socrative.com/login/student/] (room number: F321E8CC)
-- [Group challenge question](https://tinyurl.com/stat-group-challenge]
+- [Lesson slides](doc/fit_interp_lm_R_slides.pdf)
+- Lesson R code
+    - [R script](src/fit_interp_lm_R.R)
+    - [narrated R Markdown](src/fit_interp_lm_R.Rmd)
+- [Check-in question](https://b.socrative.com/login/student/) (room number: F321E8CC)
+- [Group challenge question](https://tinyurl.com/stat-group-challenge)
 
 ## Lesson context
 [This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
