@@ -15,8 +15,13 @@
 ## Lesson context
 [This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
 - model notation in R
-- one-way ANOVA (use as a bridge from t-test, which they have seen before, to linear regression, which is new for the students)
-- simple linear regression via ordinary least squares (theory)
+  - one-way & two-way ANOVA
+    - theory
+    - how to do in R with `aov()`
+    - how to do in R with `lm()` (including reference-treatment parameterization)
+    - interaction effects
+
+- linear regression via ordinary least squares (theory)
 
 ### Lesson learning objectives:
 By the end of this lesson students are expected to be able to:

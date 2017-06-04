@@ -58,12 +58,16 @@ By the end of the course, students are expected to be able to:
 1/4 of the way into the course. Before this lesson, students will have learned the following:
 
   - model notation in R
-  - one-way ANOVA (theory & how to do in R)
+  - one-way & two-way ANOVA
+    - theory
+    - how to do in R with `aov()`
+    - how to do in R with `lm()` (including reference-treatment parameterization)
+    - interaction effects
   - linear regression via ordinary least squares (theory)
   
-## Sample lesson: Fitting and interpreting linear regression models in R
+## Sample lesson: Simple linear regression models in R
 
-### 20 minute lesson learning objectives:
+### learning objectives:
 By the end of this lesson students are expected to be able to:
 
 - fit a simple linear model in R
@@ -73,6 +77,8 @@ By the end of this lesson students are expected to be able to:
 # Lesson Motivation
 
 # Sample Lesson
+slides and code available at: </br>
+https://github.com/ttimbers/UBC-stat-sample-lesson
 
 ## The Data:
 US property data from 2015 extracted from the Data USA API using Python </br>
@@ -269,9 +275,13 @@ https://tinyurl.com/stat-group-challenge
 
 ## Where do we go from here?
 
-  - fitting and interpreting more complex linear models
-    - theory
-    - how to in R
+  - finish simple linear regression
+    - predicted values and confidence intervals
+
+  - more complex linear regression models (multiple regression)
+    - theory (least squares)
+    - how to in R (revisit reference-treatment parameterization)
+    - interaction effects in linear regression
     
   - model diagnostics 
   

@@ -143,7 +143,7 @@ As we learned previously, there are a number of key pieces of information that w
 -   p-value for *H*<sub>0</sub>: *β*<sub>1</sub> = 0
 -   residuals
 -   predicted/fitted values
--   se($\\hat{\\beta}\_{1}$) or $\\hat{\\sigma}$
+-   $\\hat{\\sigma}$
 -   *R*<sup>2</sup>
 
 All of these pieces of information can be extracted from the the linear model object, most (except for the residuals and predicted/fitted values) can be read from the print out from `summary`. Below is code for how to extract each of these individually:
@@ -214,7 +214,7 @@ prop_model$fitted.values
     ##        50        51        52 
     ## 176844.05 104348.27 312539.32
 
-$se(\\hat{\\beta}\_{1})$ or $\\hat{\\sigma}$s:
+$\\hat{\\sigma}$s:
 
 ``` r
 summary(prop_model)$sigma
