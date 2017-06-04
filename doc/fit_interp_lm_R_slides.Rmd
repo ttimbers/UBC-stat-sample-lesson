@@ -260,7 +260,7 @@ glance(prop_model)
 ## Group challenge question:
 
 <center>
-https://tinyurl.com/stat-group-challenge
+https://tinyurl.com/UBC-stat-group-challenge
 </center>
 
 # What did we learn today?

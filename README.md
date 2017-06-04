@@ -9,7 +9,7 @@
 - Lesson R code
     - [R script](src/fit_interp_lm_R.R)
     - [narrated R Markdown](src/fit_interp_lm_R.Rmd)
-- [Group challenge question](https://tinyurl.com/stat-group-challenge)
+- [Group challenge question](https://tinyurl.com/UBC-stat-group-challenge)
 
 ## Lesson context
 [This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
