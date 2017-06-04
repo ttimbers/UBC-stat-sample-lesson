@@ -1,23 +1,23 @@
-*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561 Regression I). See [Linear Regression Course](h#linear-regression-course) below for more details.*
+*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561 Regression I). See [Linear Regression Course](README.md#linear-regression-course) below for more details about the course as a whole.*
 
 ---
 
 ## Sample lesson - Simple linear regression models in R
 
-Lesson slides: [doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)
-Lesson R code: [src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)
-Check-in question: https://b.socrative.com/login/student/ (room number: F321E8CC)
-Group challenge question: https://tinyurl.com/stat-group-challenge
+Lesson slides: [doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)</br>
+Lesson R code: [src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)</br>
+Check-in question: https://b.socrative.com/login/student/ (room number: F321E8CC)</br>
+Group challenge question: https://tinyurl.com/stat-group-challenge</br>
 
-[This 20 minute lesson excerpt](fit_interp_lm_R_lesson_plan.md) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
+[This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
 - model notation in R
 - one-way ANOVA (use as a bridge from t-test, which they have seen before, to linear regression, which is new for the students)
-- linear regression via ordinary least squares (theory and deriving least squares estimators for a simple case with one explanatory variable)
+- simple linear regression via ordinary least squares (theory)
 
 ### 20 minute lesson learning objectives:
 By the end of this lesson students are expected to be able to:
 - fit a simple linear model in R
-- interpret the output of the linear model object in R
+- interpret the output of the simple linear model object in R
 - use three functions from the `broom` package (`tidy`, `glance` and `augment`) to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data
 
 ---
