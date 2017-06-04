@@ -116,17 +116,17 @@ As you can see from our methods used above to extract key pieces of information 
 
 Thus, with 3 consistent function calls, we can easily get all the model output we are interested, and this comes to us in an tidy data format that is accessible. Let's explore the output of each of these functions when we apply it to our model object:
 
-`tidy()`
+##### `tidy()`
 ```{r tidy}
 tidy(prop_model)
 ```
 
-`augment()`
+##### `augment()`
 ```{r augment}
 head(augment(prop_model)) #use head to preview only 6 rows of data frame
 ```
 
-`glance()`
+##### `glance()`
 ```{r glance}
 glance(prop_model)
 ```
