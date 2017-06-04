@@ -1,14 +1,14 @@
-*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561 Regression I). See [Linear Regression Course](#linear-regression-course) below for more details about the course as a whole.*
+*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561 Regression I). See [Linear Regression Course](https://github.com/ttimbers/UBC-stat-sample-lesson/blob/master/README.md#linear-regression-course) below for more details about the course as a whole.*
 
 ---
 
 ## Sample lesson - Simple linear regression models in R
 
 ## Important lesson links:
-- (Lesson slides)[doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)
-- (Lesson R code)[src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)
-- (Check-in question)[https://b.socrative.com/login/student/] (room number: F321E8CC)
-- (Group challenge question)[https://tinyurl.com/stat-group-challenge]
+- [Lesson slides](doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)
+- [Lesson R code](src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)
+- [Check-in question](https://b.socrative.com/login/student/] (room number: F321E8CC)
+- [Group challenge question](https://tinyurl.com/stat-group-challenge]
 
 ## Lesson context
 [This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
