@@ -1,4 +1,26 @@
-*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561).*
+*This is a sample teaching lesson for a 20 minute session from a Data Science course on linear regression (e.g., DSCI 561 Regression I). See [Linear Regression Course](h#linear-regression-course) below for more details.*
+
+---
+
+## Sample lesson - Simple linear regression models in R
+
+Lesson slides: [doc/fit_interp_lm_R_slides.pdf](doc/fit_interp_lm_R_slides.pdf)
+Lesson R code: [src/fit_interp_lm_R.Rmd](fit_interp_lm_R.Rmd)
+Check-in question: https://b.socrative.com/login/student/ (room number: F321E8CC)
+Group challenge question: https://tinyurl.com/stat-group-challenge
+
+[This 20 minute lesson excerpt](fit_interp_lm_R_lesson_plan.md) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
+- model notation in R
+- one-way ANOVA (use as a bridge from t-test, which they have seen before, to linear regression, which is new for the students)
+- linear regression via ordinary least squares (theory and deriving least squares estimators for a simple case with one explanatory variable)
+
+### 20 minute lesson learning objectives:
+By the end of this lesson students are expected to be able to:
+- fit a simple linear model in R
+- interpret the output of the linear model object in R
+- use three functions from the `broom` package (`tidy`, `glance` and `augment`) to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data
+
+---
 
 # Linear Regression Course
 
@@ -21,20 +43,3 @@ By the end of the course, students are expected to be able to:
 *(adapted from public description of UBC MDS course DSCI 561)*
 - [Faraway, Julian J. Linear Models with R, 2nd Edition. Chapman and Hall, 2014.](https://login.ezproxy.library.ubc.ca/login?url=http://www.ubc.eblib.com/patron/FullRecord.aspx?p=1640577)
 - [`broom` package in R](https://cran.r-project.org/web/packages/broom/vignettes/broom.html)
-
----
-
-## Sample lesson - Fitting and interpreting linear regression models in R
-
-Lesson etherpad: https://etherpad.wikimedia.org/p/stat-sample-lesson
-
-[This 20 minute lesson excerpt](fit_interp_lm_R_lesson_plan.md) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
-- model notation in R
-- one-way ANOVA (use as a bridge from t-test, which they have seen before, to linear regression, which is new for the students)
-- linear regression via ordinary least squares (theory and deriving least squares estimators for a simple case with one explanatory variable)
-
-### 20 minute lesson learning objectives:
-By the end of this lesson students are expected to be able to:
-- fit a simple linear model in R
-- interpret the output of the linear model object in R
-- use three functions from the `broom` package (`tidy`, `glance` and `augment`) to extract model parameters, measures of model complexity and quality, as well as residuals and predicted values as tidy data
