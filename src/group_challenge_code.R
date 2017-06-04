@@ -1,3 +1,6 @@
+# Code for group challenge question
+# https://docs.google.com/spreadsheets/d/10KFsF4zlGmAb7HVr5qG82Wxw4Xnu1tRQEcJ9AHuQuU0/edit?usp=sharing
+
 library(tidyverse)
 library(broom) #part of newest tidyverse release, but not older ones...
 library(scales) # to format axis in dollars
