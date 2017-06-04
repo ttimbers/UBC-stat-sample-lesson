@@ -14,7 +14,7 @@
 ## Lesson context
 [This 20 minute lesson excerpt](doc/fit_interp_lm_R_slides.pdf) sits in a lecture about 1/4 of the way into the course. Before this lesson, students will have learned the following:
 - model notation in R
-  - one-way & two-way ANOVA
+- one-way & two-way ANOVA
     - theory
     - how to do in R with `aov()`
     - how to do in R with `lm()` (including reference-treatment parameterization)
