@@ -137,14 +137,14 @@ summary(prop_model)
 
 As we learned previously, there are a number of key pieces of information that we would like to be able to look at from our model, these include:
 
-    - $\hat{\beta}_{0}$
-    - $\hat{\beta}_{1}$
-    - p-value for $H_{0}$: $\beta_{0}$ = 0
-    - p-value for $H_{0}$: $\beta_{1}$ = 0
-    - residuals
-    - predicted/fitted values
-    - se($\hat{\beta}_{1}$) or $\hat{\sigma}$
-    - $R^{2}$
+-   $\\hat{\\beta}\_{0}$
+-   $\\hat{\\beta}\_{1}$
+-   p-value for *H*<sub>0</sub>: *β*<sub>0</sub> = 0
+-   p-value for *H*<sub>0</sub>: *β*<sub>1</sub> = 0
+-   residuals
+-   predicted/fitted values
+-   se($\\hat{\\beta}\_{1}$) or $\\hat{\\sigma}$
+-   *R*<sup>2</sup>
 
 All of these pieces of information can be extracted from the the linear model object, most (except for the residuals and predicted/fitted values) can be read from the print out from `summary`. Below is code for how to extract each of these individually:
 

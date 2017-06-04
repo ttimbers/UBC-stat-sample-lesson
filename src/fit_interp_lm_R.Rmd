@@ -34,7 +34,7 @@ head(prop_data)
 
 We are interested in whether or not median household income might influence median property value at the state-level. To get an initial idea of whether this is plausible, we will plot the data as a scatter plot. We will also use `ggplot`'s `geom_smooth` function to overlay the oridinary least squares regression line on our plot:
 
-```{r explore data, fig.width = 3.5, fig.height = 4}
+```{r explore data, fig.width = 4, fig.height = 3.5}
 (prop_data_scatter <- ggplot(prop_data, aes(y = median_property_value, x = income)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
@@ -59,14 +59,14 @@ summary(prop_model)
 
 As we learned previously, there are a number of key pieces of information that we would like to be able to look at from our model, these include:
 
-    - $\hat{\beta}_{0}$
-    - $\hat{\beta}_{1}$
-    - p-value for $H_{0}$: $\beta_{0}$ = 0
-    - p-value for $H_{0}$: $\beta_{1}$ = 0
-    - residuals
-    - predicted/fitted values
-    - se($\hat{\beta}_{1}$) or $\hat{\sigma}$
-    - $R^{2}$
+- $\hat{\beta}_{0}$
+- $\hat{\beta}_{1}$
+- p-value for $H_{0}$: $\beta_{0}$ = 0
+- p-value for $H_{0}$: $\beta_{1}$ = 0
+- residuals
+- predicted/fitted values
+- se($\hat{\beta}_{1}$) or $\hat{\sigma}$
+- $R^{2}$
 
 All of these pieces of information can be extracted from the the linear model object, most (except for the residuals and predicted/fitted values) can be read from the print out from `summary`. Below is code for how to extract each of these individually:
 
