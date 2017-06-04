@@ -46,13 +46,6 @@ By the end of the course, students are expected to be able to:
   - Critique a specific regression model applied to a given dataset on the basis of both diagnostic plots and hypothesis tests.
   - Specify and interpret interaction terms and nonlinear terms.
 
-## DSCI 561 Regression I
-*(adapted from public description of UBC MDS course DSCI 561)*
-
-### Reference Materials
-  - Faraway, Julian J. Linear Models with R, 2nd Edition. Chapman and Hall, 2014.
-  - broom package vignette in R
-  
 ## Sample lesson: Simple linear regression models in R
 
 1/4 of the way into the course. Before this lesson, students will have learned the following:
@@ -118,26 +111,6 @@ $X_{1} = \textrm{income}$
 
 <p>
 $\textrm{State}\: \textrm{median}\: \textrm{property}\: \textrm{value} = \beta_{0} + \beta_{1}\textrm{income} + \varepsilon$</br>
-</center>
-
-## Model notation for linear regression in R
-
-### Simple linear regression:
-
-| Mathematical formula | model formula in R |
-|----------------------|--------------------|
-|$Y = \beta_{0} + \beta_{1}X_{1} + \varepsilon$ | `Y ~ X1` |
-
-### More complex linear regression:
-| Mathematical formula | model formula in R |
-|----------------------|--------------------|
-| $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \varepsilon$ |`Y ~ X1 + X2 + X3`| 
-| $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{1}X_{2} + \varepsilon$ | `Y ~ X1 * X2` |
-
-<center>
-<p>
-### Cheatsheet for model notation in R: </br>
-http://faculty.chicagobooth.edu/richard.hahn/teaching/formulanotation.pdf
 </center>
 
 ## Syntax for linear regression in R
