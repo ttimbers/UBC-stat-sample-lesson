@@ -1,11 +1,12 @@
 ---
-title: "Sample lesson - Fitting and interpreting linear regression models in R"
-author: "Tiffany Timbers, Ph.D."
-date: "June 6, 2017"
+title: '<font size="7">Sample lesson:</font></br>Simple linear regression models </br>in R'
+author: '<font size="5">Tiffany Timbers, Ph.D.</font>'
+date: '<font size="5">June 6, 2017</font>'
 output:
   ioslides_presentation:
     widescreen: true
     smaller: true
+    incremental: true
 ---
 
 ```{r setup, include=FALSE}
@@ -15,7 +16,9 @@ library(scales)
 library(knitr)
 ```
 
-## Lesson context
+# Lesson context
+
+## UBC MDS Curriculum
 
 <center>
 ![MDS Schedule 1](imgs/MDS-Course-Schedule-image.jpg) 
@@ -23,19 +26,13 @@ library(knitr)
 *source: [UBC MDS blog](https://ubc-mds.github.io/img/Course-Schedule-image.jpg)*
 </center>
 
-## Lesson context
+## UBC MDS Curriculum
 
 <center>
 ![MDS Schedule 2](imgs/MDS-Course-Schedule-image-2.jpeg) 
 </br>
 *source: [UBC MDS blog](https://ubc-mds.github.io/img/Course-Schedule-image.jpg)*
 </center>
-
-## DSCI 561 Regression I
-*(taken from public description of UBC MDS course DSCI 561)*
-
-### Short Description
-Linear models for a quantitative response variable, with multiple categorical and/or quantitative predictors. Matrix formulation of linear regression. Model assessment and prediction.
 
 ## DSCI 561 Regression I
 *(taken from public description of UBC MDS course DSCI 561)*
@@ -54,15 +51,15 @@ By the end of the course, students are expected to be able to:
 
 ### Reference Materials
   - Faraway, Julian J. Linear Models with R, 2nd Edition. Chapman and Hall, 2014.
-  - broom package in R
+  - broom package vignette in R
   
-## Sample lesson: Fitting and interpreting linear regression models in R
+## Sample lesson: Simple linear regression models in R
 
 1/4 of the way into the course. Before this lesson, students will have learned the following:
 
   - model notation in R
-  - one-way ANOVA
-  - linear regression via ordinary least squares
+  - one-way ANOVA (theory & how to do in R)
+  - linear regression via ordinary least squares (theory)
   
 ## Sample lesson: Fitting and interpreting linear regression models in R
 
@@ -70,13 +67,16 @@ By the end of the course, students are expected to be able to:
 By the end of this lesson students are expected to be able to:
 
 - fit a simple linear model in R
-- interpret the output of the linear model object in R
-- use three functions from the broom package extract linear model object output
+- interpret the output of the simple linear model object in R
+- use three functions from the broom package extract simple linear model object output
 
 # Lesson Motivation
 
+# Sample Lesson
+
 ## The Data:
-from Data USA: https://datausa.io/
+US property data from 2015 extracted from the Data USA API using Python </br>
+https://datausa.io/
 
 ```{r load data, include=FALSE, echo=FALSE}
 prop_data <- read_csv("https://raw.githubusercontent.com/ttimbers/UBC-stat-sample-lesson/master/data/acs_data.csv")
@@ -87,10 +87,15 @@ prop_data$year <- NULL
 kable(head(prop_data))
 ```
 
+```{r data dim, echo=FALSE}
+dim(prop_data)
+```
 
 ## Simple linear regression:
-### State property value as a function of income
 <center>
+<font size="5">US State property value as a function of income</font></br>
+
+
 ```{r plot data, echo = FALSE, fig.width = 4, fig.height = 3.5}
 (prop_data_scatter <- ggplot(prop_data, aes(y = median_property_value, x = income)) +
   geom_point() +
@@ -104,34 +109,30 @@ kable(head(prop_data))
 
 $Y = \textrm{State}\: \textrm{median}\: \textrm{property}\: \textrm{value}$</br>
 $X_{1} = \textrm{income}$
+
+<p>
+$\textrm{State}\: \textrm{median}\: \textrm{property}\: \textrm{value} = \beta_{0} + \beta_{1}\textrm{income} + \varepsilon$</br>
 </center>
 
 ## Model notation for linear regression in R
 
 ### Simple linear regression:
 
-<div class="columns-2">
-mathematical forumula:</br>
-$Y = \beta_{0} + \beta_{1}X_{1} + \varepsilon$
-
-model forumula in R:</br>
-`Y ~ X1`
-</div>
+| Mathematical formula | model formula in R |
+|----------------------|--------------------|
+|$Y = \beta_{0} + \beta_{1}X_{1} + \varepsilon$ | `Y ~ X1` |
 
 ### More complex linear regression:
-<center>
-<div class="columns-2">
-mathematical forumula:</br>
-<p> $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \varepsilon$ </br>
-<p> $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{1}X_{2} + \varepsilon$
+| Mathematical formula | model formula in R |
+|----------------------|--------------------|
+| $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{3} + \varepsilon$ |`Y ~ X1 + X2 + X3`| 
+| $Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \beta_{3}X_{1}X_{2} + \varepsilon$ | `Y ~ X1 * X2` |
 
-model forumula in R:</br>
-<p>`Y ~ X1 + X2 + X3` </br>
-<p> `Y ~ X1 * X2` </br>
-</div>
-</center>
+<center>
+<p>
 ### Cheatsheet for model notation in R: </br>
 http://faculty.chicagobooth.edu/richard.hahn/teaching/formulanotation.pdf
+</center>
 
 ## Syntax for linear regression in R
 <center>
@@ -162,15 +163,12 @@ room number: F321E8CC
 
 ## Syntax for simple linear regression
 
-create linear model object:
+create linear model object and view output in base R:
 ```{r fit model}
 prop_model <- lm(median_property_value ~ income, data = prop_data)
-```
-
-print/view model object output:
-```{r model output}
 summary(prop_model)
 ```
+
 
 ## Decoding R’s output from `summary()`:
 
@@ -180,7 +178,7 @@ summary(prop_model)
 
 | model output | code |
 |--------------|------|
-| parameter/coefficient estimates | `model_object$coefficients` |
+| parameter/coefficient estimates (*e.g.,* $\beta_{0}$ & $\beta_{1}$) | `model_object$coefficients` |
 | residuals | `model_object$residuals` |
 | predicted/fitted values | `model_object$fitted.values` |
 | p-values for coefficients | ` summary(model_object)$coefficients[,4]` |
@@ -190,43 +188,42 @@ summary(prop_model)
 ----
 
 <center>
-<font size="2">Working with model output in base R,</font></br>
+<font size="6">Working with model output in base R,</font></br>
 
 <p>
 ![](imgs/gbu.gif)
 
-<p><font size="2">the good, the bad and the ugly…</font>
+<p><font size="6">the good, the bad and the ugly…</font>
 </center>
 
 ----
 
 ### The good…
-  - all the information you want it there
-  - this has been used for many many many years and thus should be familiar to most Data
-  - Scientists and Statisticians
+  - all the information you want is viewable
+  - this has been used for many many many years and thus should be familiar to most Data Scientists and Statisticians
 
 ### The bad…
   - inconsistent syntax to extract model output
   - model output is returned in a variety of forms, and is not tidy data
 
 ### The ugly…
-  - bizarre symbols in some column names (e.g., summary(model_object)$coefficient)
+  - bizarre symbols in some column names (*e.g.,* `summary(model_object)$coefficient`)
   - F-statistic p-value is never stored in memory and thus must be calculated by hand
   
 ----  
 
 <center>
-<font size="2">`broom`:</font></br>
+<font size="6">`broom`:</font></br>
 <p>
 ![](imgs/broom.gif)
 <p>
-<font size="2">A better way for working with model output in R</font>
+<font size="6">A better way for working with model output in R</font>
 </center>
 
 ## `broom` for working with model output in R:
 
 ### The good…
-  - all the information you want it there, and easy to access
+  - all the information you want is stored in memory, and easy to access
   - consistent syntax
   - no weird column names
 
@@ -236,11 +233,31 @@ summary(prop_model)
 ### The ugly…
   - ???
 
+## `broom` for working with model output in R:
+
 | `broom` function | model output |
-|------------------|--------------|
-| `tidy(model_object) |  model parameters (e.g., coefficients and p-values) |
-| `augment(model_object)` |  model data (e.g., residuals and predicted values) |
-| `glance(model_object)` |  model quality, complexity and summaries (e.g., $\sigma$ estimate and $R^{2}$) |
+|---------|--------------|
+| `tidy(model_object)` |  model parameters (*e.g.,* coefficients and p-values) |
+| `augment(model_object)` |  model data (*e.g.,* residuals and predicted values) |
+| `glance(model_object)` |  model quality, complexity and summaries (*e.g.,* $\sigma$ estimate and $R^{2}$) |
+
+## Example output from `tidy()`
+
+```{r tidy example}
+tidy(prop_model)
+```
+
+## Example output from `augment()`
+
+```{r augment example}
+augment(prop_model)
+```
+
+## Example output from `glance()`
+
+```{r glance example}
+glance(prop_model)
+```
 
 ## Group challenge question:
 
@@ -252,7 +269,12 @@ https://tinyurl.com/stat-group-challenge
 
 ## Where do we go from here?
 
-  - fitting in interpreting more complex linear models in R, revisit:
-    - reference-treatment parameterization in R
-    - R’s matrix representation of X (model.matrix)
-  - model diagnostics (e.g., how do we know if we have a good model? and what to do if we do not…)
+  - fitting and interpreting more complex linear models
+    - theory
+    - how to in R
+    
+  - model diagnostics 
+  
+  - dealing with nonlinear terms
+
+# Questions/Discussion
