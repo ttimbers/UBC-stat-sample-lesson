@@ -159,14 +159,6 @@ $\textrm{State}\: \textrm{median}\: \textrm{property}\: \textrm{value} = \beta_{
 `prop_model <- lm(median_property_value ~ income, data = prop_data)`
 </center>
 
-## Check-in question:
-
-<center>
-https://b.socrative.com/login/student/
-
-room number: F321E8CC
-</center>
-
 ## Syntax for simple linear regression
 
 create linear model object and view output in base R:
