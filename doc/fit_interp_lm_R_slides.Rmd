@@ -224,6 +224,7 @@ summary(prop_model)
   - all the information you want is stored in memory, and easy to access
   - consistent syntax
   - no weird column names
+  - output is returned as data frames in tidy data format
 
 ### The bad…
   - it’s new, so not everyone is familiar with it
