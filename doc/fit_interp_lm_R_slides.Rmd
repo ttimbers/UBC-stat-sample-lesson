@@ -26,18 +26,6 @@ library(knitr)
 *source: [UBC MDS blog](https://ubc-mds.github.io/img/Course-Schedule-image.jpg)*
 </center>
 
-## DSCI 561 Regression I
-*(taken from public description of UBC MDS course DSCI 561)*
-
-### Course Learning Outcomes
-
-By the end of the course, students are expected to be able to:
-
-  - Fit and interpret a linear regression model.
-  - Identify whether a linear regression model is appropriate for a given dataset.
-  - Critique a specific regression model applied to a given dataset on the basis of both diagnostic plots and hypothesis tests.
-  - Specify and interpret interaction terms and nonlinear terms.
-
 ## Sample lesson: Simple linear regression models in R
 
 1/4 of the way into the course. Before this lesson, students will have learned the following:
@@ -49,7 +37,12 @@ By the end of the course, students are expected to be able to:
     - how to do in R with `lm()` (including reference-treatment parameterization)
     - interaction effects
   - simple ordinary least squares linear regression (theory)
-  
+
+# Sample Lesson
+slides and code available at: </br>
+https://github.com/ttimbers/UBC-stat-sample-lesson
+
+
 ## Sample lesson: Simple linear regression models in R
 
 ### learning objectives:
@@ -60,10 +53,6 @@ By the end of this lesson students are expected to be able to:
 - use three functions from the broom package extract simple linear model object output
 
 # Lesson Motivation
-
-# Sample Lesson
-slides and code available at: </br>
-https://github.com/ttimbers/UBC-stat-sample-lesson
 
 ## The Data:
 US property data from 2015 extracted from the Data USA API using Python </br>
@@ -135,7 +124,20 @@ summary(prop_model)
 
 ## Decoding R’s output from `summary()`:
 
-![](imgs/summary_decoded.png)
+![](imgs/beta0.png)
+
+## Decoding R’s output from `summary()`:
+
+![](imgs/beta1.png)
+
+## Decoding R’s output from `summary()`:
+
+![](imgs/sigma.png)
+
+## Decoding R’s output from `summary()`:
+
+![](imgs/rsquared.png
+)
 
 ## Extracting output from model object in base R:
 
@@ -233,10 +235,7 @@ https://tinyurl.com/UBC-stat-group-challenge
 
 ## Where do we go from here?
 
-  - finish simple linear regression
-    - predicted values and confidence intervals
-
-  - more complex linear regression models (multiple regression)
+ - more complex linear regression models (multiple regression)
     - theory (least squares)
     - how to in R (revisit reference-treatment parameterization)
     - interaction effects in linear regression
